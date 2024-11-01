@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="fondo-container"></div>
+
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" />
+  </div>
+
+  <!-- Mostrar el apodo del usuario en la parte superior -->
+  <div class="intro-text">Bienvenido, {{ apodo }}</div> <!-- Muestra el apodo aquí -->
+  
+  <div class="button-container">
+    <div class="text-group">
+      <div class="text-label">MASTER</div>
+      <ion-button (click)="goToMaster()">Ir</ion-button>
+    </div>
+
+    <div class="text-group">
+      <div class="text-label">JUGADOR</div>
+      <ion-button (click)="goToSeleccionjugador()">Ir</ion-button>
+    </div>
+  </div>
+</ion-content>

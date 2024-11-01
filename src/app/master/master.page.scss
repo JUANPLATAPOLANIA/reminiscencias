@@ -1,0 +1,116 @@
+ion-content {
+    --background: #2b2121; /* Color de fondo */
+    position: relative;
+  
+    .logo-container {
+      text-align: center;
+      margin-top: 10px;
+  
+      img {
+        width: 200px;
+        height: auto;
+      }
+    }
+  
+    /* Título PERFIL MASTER con imagen al lado */
+    .profile-title {
+      display: flex; /* Usar flexbox para alinear imagen y texto */
+      align-items: center; /* Alinear verticalmente */
+      justify-content: center; /* Centrar horizontalmente */
+      font-size: 18px;
+      font-weight: bold;
+      color: #080808; /* Color del texto */
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgba(102, 82, 82, 0.8); /* Fondo translúcido detrás del título */
+      border-radius: 10px;
+      width: 220px; /* Ajustar el ancho para que acomode la imagen */
+      margin: 20px auto;
+  
+      .profile-icon {
+        width: 30px; /* Ajustar el tamaño de la imagen */
+        height: auto; /* Mantener proporción */
+        margin-right: 10px; /* Espaciado entre la imagen y el texto */
+      }
+    }
+  
+    .fondo-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('/../../assets/fondorol.png') no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+    }
+  
+    /* Grid para los bloques de botones */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+      gap: 15px; /* Espacio entre los bloques */
+      align-items: start; /* Alinear los bloques al inicio */
+  
+      .button-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(217, 217, 217, 0.8); /* Fondo translúcido para los bloques */
+        padding: 15px; /* Espaciado interno para los bloques */
+        border-radius: 15px;
+        transition: transform 0.2s; /* Efecto de transformación al pasar el mouse */
+        text-align: center; /* Centrar el texto */
+  
+        &:hover {
+          transform: scale(1.05); /* Escala al pasar el mouse */
+        }
+  
+        ion-icon,
+        img {
+          width: 50px; /* Tamaño de la imagen y el icono */
+          height: auto;
+          margin-bottom: 10px; /* Margen inferior */
+        }
+  
+        .button-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+  
+          button {
+            font-size: 14px; /* Tamaño de fuente del botón */
+            padding: 8px 12px; /* Ajustar padding para hacer el botón más fácil de presionar */
+            margin-bottom: 5px; /* Espacio entre los botones */
+            border: none; /* Sin borde */
+            border-radius: 8px; /* Bordes redondeados */
+            background: rgba(217, 217, 217, 1); /* Color del fondo de los botones */
+            color: black; /* Color del texto de los botones */
+            transition: background-color 0.3s, color 0.3s; /* Transiciones para el color */
+  
+            &.small-button,
+            &.block-button {
+              &:hover {
+                background: rgba(217, 217, 217, 1); /* Mismo color al pasar el mouse */
+                color: #0b0b0b; /* Color del texto al pasar el mouse */
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    /* Botón VOLVER */
+    .back-button-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+  
+      .back-button {
+        --background: #6a5b5b;
+        --color: #0e0f0e;
+        width: 180px; /* Reducir el ancho del botón volver */
+      }
+    }
+  }
+  

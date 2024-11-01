@@ -1,0 +1,54 @@
+ion-content {
+  position: relative; /* Asegúrate de que el contenido se posicione correctamente */
+
+  .fondo-container {
+    position: absolute; /* Asegura que el fondo esté detrás de otros elementos */
+    top: 0; /* Alinea la parte superior */
+    left: 0; /* Alinea la parte izquierda */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura */
+    background: url('/../../assets/Castle.png') no-repeat center center; /* Asegúrate de que la ruta sea correcta */
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    z-index: -1; /* Coloca el fondo detrás de otros elementos */
+  }
+
+  .logo-container {
+    text-align: center;
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+
+    img {
+      width: 150x; /* Ajusta el tamaño del logo */
+      height: auto; /* Mantiene la proporción del logo */
+    }
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    border-radius: 10px; /* Esquinas redondeadas */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px; /* Margen alrededor del recuadro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    
+    h2 {
+      text-align: center; /* Centra el título */
+      margin-bottom: 20px; /* Espaciado inferior */
+    }
+
+    ion-item {
+      margin-bottom: 20px; /* Espaciado entre los campos de entrada */
+    }
+  }
+
+  /* Estilos para los botones */
+  ion-button {
+    --background: rgba(217, 217, 217, 1); /* Establece el color de fondo de los botones */
+    --border-radius: 15px; /* Aumenta la curvatura de los botones */
+    margin: 30px auto; /* Ajusta el margen superior e inferior para bajar más los botones */
+    display: block; /* Asegura que los botones se comporten como bloques para el centrado */
+    padding: 10px; /* Añade padding interno para aumentar el tamaño del botón */
+
+    &:first-of-type {
+      --margin-top: 100px; /* Margen superior adicional solo para el botón "Ingresar" */
+    }
+  }
+}

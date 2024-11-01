@@ -1,0 +1,53 @@
+<ion-content>
+  <!-- Contenedor del logo del juego -->
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo Reminiscencias" />
+  </div>
+
+  <!-- Título central "Perfil Master" con imagen al lado -->
+  <div class="profile-title">
+    <img src="assets/administrador.png" class="profile-icon" /> <!-- Agrega aquí la imagen -->
+    PERFIL MASTER
+  </div>
+
+  <div class="fondo-container"></div>
+
+  <!-- Sección de botones e iconos -->
+  <div class="button-grid">
+    <!-- Primer bloque (Crear servidor / Ver salas) -->
+    <div class="button-block">
+      <img src="assets/grupo.png" alt="Icono Equipamiento">
+      <div class="button-text">
+        <button class="small-button" (click)="crearServidor()">Crear servidor</button>
+        <button class="small-button" (click)="verSalas()">Ver salas</button>
+      </div>
+    </div>
+
+    <!-- Segundo bloque (Equipamiento Jugadores) -->
+    <div class="button-block">
+      <img src="assets/equipamiento.png" alt="Icono Equipamiento">
+      <div class="button-text">
+        <button class="block-button">Equipamiento jugadores</button>
+      </div>
+    </div>
+
+    <!-- Tercer bloque (Agregar características) -->
+    <div class="button-block">
+      <img src="assets/caracteristicas.png" alt="Icono Características">
+      <div class="button-text">
+        <button class="block-button">Agregar características</button>
+      </div>
+    </div>
+
+    <!-- Cuarto bloque (Crear personajes / Ver personajes) -->
+    <div class="button-block">
+      <img src="assets/mas.png" alt="Icono Características">
+      <div class="button-text">
+        <button class="small-button" (click)="crearPersonje()">Creación de personajes</button>
+        <button class="block-button">Ver personajes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón de volver -->
+</ion-content>

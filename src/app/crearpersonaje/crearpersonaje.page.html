@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>crearpersonaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">crearpersonaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+<ion-content>
+  <div class="container">
+    <div class="header">
+      <img src="assets/logo.png" alt="Reminiscencias Logo" class="logo" />
+      <span>Información del personaje</span>
+      <ion-avatar class="profile-icon">
+        <img src="assets/profile-placeholder.png" />
+      </ion-avatar>
+    </div>
+    <div class="form">
+      <ion-item lines="none">
+        <ion-label>ID DE MOJA: UVTY0176</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Nombre" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Apodo" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Edad" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Altura" type="number"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="image-upload">
+        <ion-label>Imagen</ion-label>
+        <input type="file" id="imagen" style="margin-left: 10px;" />
+        <ion-note slot="end">Seleccionar imagen</ion-note>
+      </ion-item>
+      <ion-button expand="block" color="primary" (click)="crearPersonaje()">CREAR</ion-button>
+      <ion-button expand="block" color="medium" routerLink="/volver">VOLVER</ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,100 @@
+// Fondo y contenedor principal
+ion-content {
+    --background: url('/../../assets/selectjugador.png') no-repeat center center / cover;
+
+  }
+  
+  // Estilo del encabezado (logo y selector de avatar)
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
+    .logo {
+      width: 100px;
+    }
+    
+    .avatar-section {
+      display: flex;
+      align-items: center;
+      
+      ion-label {
+        font-size: 0.8rem;
+        margin: 0 0.3rem;
+      }
+    }
+  }
+  
+  // Título de la sección "Personajes"
+  .section-title {
+    text-align: center;
+    margin: 0.5rem 1rem;
+    background: #333;
+    
+    ion-card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      
+    }
+  }
+  
+  // Grid para los personajes
+  .characters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    
+    .character-card {
+      background: rgba(170, 169, 140, 0.696); // Color sólido detrás de los botones
+      border-radius: 10px;
+      overflow: hidden;
+      
+      ion-card-header {
+        background: transparent;
+        padding: 0.2rem 0;
+        
+        .character-name {
+          font-size: 1.2rem;
+          color: red;
+          font-weight: bold;
+          text-align: center;
+          
+        }
+      }
+      
+      ion-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .character-image {
+          width: 50px;
+          height: auto;
+          margin: 0.5rem 0;
+          border-radius: 8px;
+        }
+        
+        ion-button {
+            margin-top: 0.5rem;
+            background-color: #000;  // Cambia el fondo del botón a negro
+            color: #fff;             // Cambia el color del texto a blanco para mejor visibilidad
+          }
+      }
+    }
+  }
+  
+  // Botones de navegación
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    
+    ion-button {
+      width: 45%;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  }
+  

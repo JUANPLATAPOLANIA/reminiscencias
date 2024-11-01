@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Sala</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo-container">
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" />
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Nombre de la Sala</ion-label>
+    <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">ID de Sala</ion-label>
+    <ion-input [(ngModel)]="id" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="descripcion"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="crearSala()">Crear Sala</ion-button>
+  <ion-button expand="block" color="light" (click)="volver()">Volver</ion-button>
+</ion-content>

@@ -1,0 +1,88 @@
+ion-content {
+    --background: url('/../../assets/fondojugador.png') no-repeat center center / cover;
+    color: #fff;
+    height: 100%;
+    padding: 15px;
+
+    
+  
+    .player-info {
+        text-align: center;
+  
+      h2 {
+        color: #b0ff00;
+      }
+  
+      p {
+        margin: 0;
+        color: #ffffff;
+        content: '\f117';
+        font-size: 20px;     
+        font-weight: bold; /* Hacemos el texto en negrita */       
+      }
+  
+      .avatar-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+  
+        ion-badge {
+          margin-left: 10px;
+          background-color: #0000ff;
+          color: rgb(14, 14, 14);
+        }
+      }
+    }
+  
+    .character-section {
+      text-align: center;
+  
+      img {
+        width: 100px;
+        height: auto;
+      }
+  
+      ion-button {
+        --background: #cccccc;
+        --border-radius: 10px;
+        margin-top: 10px;
+      }
+    }
+  
+    .armor-class-section,
+    .combat-section,
+    .hit-points-section {
+      margin: 20px;
+  
+      h3 {
+        text-align: center;
+        border-bottom: 2px solid #ffffff;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+  
+      .stats {
+        display: flex;
+        justify-content: space-between;
+  
+        .stat-block {
+          width: 48%;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: 10px;
+          border-radius: 10px;
+          text-align: center; /* Añadido para centrar el texto */
+  
+          h4 {
+            color: #ffcc00;
+          }
+        }
+      }
+    }
+  
+    ion-button {
+      --background: #808080;
+      --border-radius: 5px;
+    }
+  }
+  
