@@ -12,6 +12,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'addcaracteristicas',
+    loadChildren: () => import('./addcaracteristicas/addcaracteristicas.module').then(m => m.AddcaracteristicasPageModule)
+  },
+  {
+  
     path: 'ingreso',
     loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoPageModule)
   },
@@ -55,6 +60,8 @@ const routes: Routes = [
     path: 'versala',
     loadChildren: () => import('./versala/versala.module').then( m => m.VersalaPageModule)
   },
+
+  
 ];
 
 @NgModule({
