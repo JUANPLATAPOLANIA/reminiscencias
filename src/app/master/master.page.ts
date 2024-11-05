@@ -21,4 +21,8 @@ export class MasterPage {
   crearPersonje() {
     this.navCtrl.navigateForward('/crearpersonaje');
   }
+
+  addcaracteristicas() {
+    this.navCtrl.navigateForward('/addcaracteristicas');
+  }
 }
