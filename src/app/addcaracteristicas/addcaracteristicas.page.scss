@@ -1,0 +1,27 @@
+ion-content {
+    --background: url('/assets/textura-papel.jpg') no-repeat center center / cover;
+  }
+  
+  ion-card-title {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  ion-item ion-label {
+    font-size: 1.2rem;
+    color: #5a3e36;
+  }
+  
+  ion-input {
+    width: 100px;
+    text-align: center;
+  }
+  
+  ion-footer {
+    ion-button {
+      width: 100%;
+      --background: #5a3e36;
+      --color: white;
+    }
+  }
+  
