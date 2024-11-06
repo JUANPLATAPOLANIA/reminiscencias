@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro',
@@ -10,62 +11,58 @@ export class RegistroPage {
   usuario: string = '';
   apodo: string = '';
   contrasena: string = '';
-  contrasenaConfirmar: string = '';
 
-  constructor(private alertController: AlertController) {}
-
-  async registrar() {
-    // Verificar si las contraseñas coinciden
-    if (this.contrasena !== this.contrasenaConfirmar) {
-      await this.mostrarAlerta('Error', 'Las contraseñas no coinciden');
-      return;
-    }
-
-    // Recuperar usuarios guardados o iniciar con un array vacío
-    const usuariosGuardados: any[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
-
-    // Verificar si el usuario ya está registrado
-    const usuarioExistente = usuariosGuardados.find((user: any) => user.usuario === this.usuario);
-
-    if (usuarioExistente) {
-      await this.mostrarAlerta('Error', 'El usuario ya está registrado');
-      return; // No continuar con el registro si el usuario ya existe
-    }
-
-    // Si el usuario no existe, crear un nuevo objeto de usuario
-    const usuarioData = {
-      usuario: this.usuario,
-      apodo: this.apodo,
-      contrasena: this.contrasena, // Recuerda: En un entorno real, encripta la contraseña.
-    };
-
-    // Agregar el nuevo usuario al array
-    usuariosGuardados.push(usuarioData);
-
-    // Guardar el array actualizado en localStorage
-    localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
-
-    // Imprimir en consola los usuarios registrados
-    console.log('Usuarios registrados:', usuariosGuardados);
-
-    await this.mostrarAlerta('Éxito', 'Usuario registrado correctamente');
-    this.limpiarCampos();
+  constructor(
+    private navCtrl: NavController,
+    private toastController: ToastController,
+    private http: HttpClient // Añadimos HttpClient
+  ) {}
+  goToLogin() {
+    this.navCtrl.navigateForward('/');
   }
+  async register() {
+    if (this.usuario && this.apodo && this.contrasena) {
+      const data = {
+        usuario: this.usuario,
+        apodo: this.apodo,
+        contrasena: this.contrasena,
+      };
 
-  async mostrarAlerta(titulo: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      header: titulo,
-      message: mensaje,
-      buttons: ['OK'],
-    });
+      // Enviar datos al servidor
+      this.http.post('http://localhost:3000/register', data)
+        .subscribe(
+          async response => {
+            console.log('Usuario registrado:', response);
+            
+            // Mostrar mensaje de éxito
+            const toast = await this.toastController.create({
+              message: 'Registro exitoso',
+              duration: 2000,
+              color: 'success'
+            });
+            toast.present();
 
-    await alert.present();
-  }
-
-  limpiarCampos() {
-    this.usuario = '';
-    this.apodo = '';
-    this.contrasena = '';
-    this.contrasenaConfirmar = '';
+          },
+          async error => {
+            console.error('Error al registrar:', error);
+            
+            // Mostrar mensaje de error
+            const toast = await this.toastController.create({
+              message: 'Error al registrar. Intente nuevamente.',
+              duration: 2000,
+              color: 'danger'
+            });
+            toast.present();
+          }
+        );
+    } else {
+      // Mostrar un mensaje de error si falta algún campo
+      const toast = await this.toastController.create({
+        message: 'Por favor, complete todos los campos',
+        duration: 2000,
+        color: 'danger'
+      });
+      toast.present();
+    }
   }
 }

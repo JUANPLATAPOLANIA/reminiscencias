@@ -1,52 +1,70 @@
-import { Component } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.page.html',
   styleUrls: ['./ingreso.page.scss'],
 })
-export class IngresoPage {
-  usuario: string = '';  // Variable para almacenar el nombre de usuario ingresado
-  contrasena: string = ''; // Variable para almacenar la contraseña ingresada
+export class IngresoPage implements OnInit {
+  usuario: string = '';
+  contrasena: string = '';
 
-  constructor(private alertController: AlertController, private navCtrl: NavController) {}
+  constructor(
+    private http: HttpClient,
+    private toastController: ToastController,
+    private navCtrl: NavController
+  ) {}
 
-  async goToIngresar() {
-    // Verificar que los campos no estén vacíos
-    if (this.usuario.trim() === '' || this.contrasena.trim() === '') {
-      await this.mostrarAlerta('Error', 'Por favor, completa todos los campos.');
-      return; // Salir de la función si hay campos vacíos
-    }
+  ngOnInit() {}
 
-    // Recuperar usuarios guardados del localStorage
-    const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios') || '[]');
+  async login() {
+    if (this.usuario && this.contrasena) {
+      const data = {
+        usuario: this.usuario,
+        contrasena: this.contrasena,
+      };
 
-    // Buscar el usuario ingresado
-    const usuarioEncontrado = usuariosGuardados.find((user: any) => user.usuario === this.usuario && user.contrasena === this.contrasena);
-
-    if (usuarioEncontrado) {
-      // Si se encuentra el usuario y la contraseña es correcta
-      await this.mostrarAlerta('Éxito', `Bienvenido, ${usuarioEncontrado.apodo}!`);
-      
-      // Navegar a la página Ingresar1 y pasar el apodo
-      this.navCtrl.navigateForward('/ingresar1', {
-        queryParams: { apodo: usuarioEncontrado.apodo }
-      });
+      this.http.post('http://localhost:3000/ingreso', data)
+        .subscribe(
+          async (response: any) => {
+            if (response.success) {
+              // Autenticación exitosa
+              const toast = await this.toastController.create({
+                message: 'Inicio de sesión exitoso',
+                duration: 2000,
+                color: 'success'
+              });
+              toast.present();
+              this.navCtrl.navigateRoot('/ingresar1'); // Navegar a la página ingresar1
+            } else {
+              // Error de autenticación
+              const toast = await this.toastController.create({
+                message: 'Usuario o contraseña incorrectos',
+                duration: 2000,
+                color: 'danger'
+              });
+              toast.present();
+            }
+          },
+          async error => {
+            console.error('Error al iniciar sesión:', error);
+            const toast = await this.toastController.create({
+              message: 'Error al iniciar sesión. Intente nuevamente.',
+              duration: 2000,
+              color: 'danger'
+            });
+            toast.present();
+          }
+        );
     } else {
-      // Si no se encuentra el usuario o la contraseña es incorrecta
-      await this.mostrarAlerta('Error', 'Usuario o contraseña incorrectos.');
+      const toast = await this.toastController.create({
+        message: 'Por favor, complete todos los campos',
+        duration: 2000,
+        color: 'danger'
+      });
+      toast.present();
     }
-  }
-
-  async mostrarAlerta(titulo: string, mensaje: string) {
-    const alert = await this.alertController.create({
-      header: titulo,
-      message: mensaje,
-      buttons: ['OK'],
-    });
-
-    await alert.present();
   }
 }
-
